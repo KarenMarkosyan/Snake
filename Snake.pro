@@ -20,8 +20,7 @@ SOURCES += main.cpp\
     Game.cpp \
     Painter.cpp \
     Scene.cpp \
-    Snake.cpp \
-    Painter.cpp
+    Snake.cpp
 
 HEADERS  += menu.h \
     gamefield.h \
@@ -30,9 +29,7 @@ HEADERS  += menu.h \
     Game.h \
     Painter.h \
     Scene.h \
-    Snake.h \
-    Painter.h
-	
+    Snake.h
 
 FORMS    += menu.ui \
     gamefield.ui
