@@ -14,7 +14,7 @@ class Scene : public QOpenGLWidget
 public:
     Scene( QWidget *parent = 0 );
     ~Scene();
-    void setSize(int wS, int hS, int s);
+    void setSize(int wS, int hS, int s, bool **f);
 signals:
     void signalShowStatus( const QString &status );
 

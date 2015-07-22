@@ -48,6 +48,37 @@ menu::readOptions()
     s = ui->speed->value();
 }
 
+bool **menu::load(QString file)
+{
+    bool ** res = 0;
+    QFile f(file);
+    if (f.open(QIODevice::ReadOnly)){
+        QString s(f.readAll());
+        int ih = s.mid(0, s.indexOf('\n')).toInt();
+        s.remove(0, s.indexOf('\n')+1);
+        int iw = s.mid(0, s.indexOf('\n')+1).toInt();
+        s.remove(0, s.indexOf('\n')+1);
+
+
+        h = ih;
+        w = iw;
+
+        res = new bool *[ih];
+        for (int i = 0; i < ih; ++i)
+          res[i] = new bool [iw];
+
+
+        for (int i = 0; i < ih; i++){
+            for (int j = 0; j < iw; j++){
+                    res[i][j] = s.mid(0, 1).toInt();
+                    s.remove(0,1);
+            }
+            s.remove(0,2);
+        }
+    }
+    return res;
+}
+
 void menu::on_options_clicked()
 {
     showHideOptions(true);
@@ -87,4 +118,11 @@ void menu::CLEAR()
 {
     if (gF->windowTitle().isEmpty())
         delete gF;
+}
+
+void menu::on_couse_clicked()
+{
+    gF = new gameField(w, h, s, load(ui->path->text()));
+    gF->show();
+    connect(gF, SIGNAL(windowTitleChanged(QString)), this, SLOT(CLEAR()));
 }

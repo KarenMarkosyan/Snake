@@ -10,7 +10,7 @@ public:
     static int getH();
     enum { BLOCK_WIDTH = 10, BLOCK_HEIGHT = 10 };
     enum Type { EMPTY, SNAKE_BLOCK, FRUIT, BARRIER};
-    Field(int w, int h);
+    Field(int w, int h, bool **f);
     ~Field();
     void setBlock( Type type, int x, int y );
     Type block( int x, int y ) const;
@@ -20,6 +20,7 @@ public:
 
 private:
     Type **m_m;
+    bool **f;
     int  w;
     int  h;
     static int *wp;

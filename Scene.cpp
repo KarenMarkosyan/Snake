@@ -21,10 +21,10 @@ Scene::~Scene()
     delete m_game;
 }
 
-void Scene::setSize(int wS, int hS, int s)
+void Scene::setSize(int wS, int hS, int s, bool **f)
 {
     sp = 100 * 10/s;
-    m_game = new Game(wS, hS);
+    m_game = new Game(wS, hS, f);
     m_maxSize = m_game->snakeMaxSize();
     m_game->newGame();
     sendStatus();

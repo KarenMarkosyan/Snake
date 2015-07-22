@@ -14,7 +14,7 @@ class gameField : public QWidget
     Q_OBJECT
 
 public:
-    explicit gameField(int w, int h, int s, QWidget *parent = 0);
+    explicit gameField(int w, int h, int s, bool **f = 0, QWidget *parent = 0);
     ~gameField();
 
 private:

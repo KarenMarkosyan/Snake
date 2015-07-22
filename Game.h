@@ -10,7 +10,7 @@ class Painter;
 class Game
 {
 public:
-    Game(int w, int h);
+    Game(int w, int h, bool **f);
     ~Game();
     void newGame();
     void tick();

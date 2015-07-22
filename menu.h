@@ -1,8 +1,11 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <QFile>
 #include <QMainWindow>
+
 #include "gamefield.h"
+
 namespace Ui {
 class menu;
 }
@@ -28,6 +31,8 @@ private slots:
 
     void CLEAR();
 
+    void on_couse_clicked();
+
 private:
     Ui::menu *ui;
     //Текущее конфигурации
@@ -40,6 +45,7 @@ private:
     gameField *gF;
     showHideOptions(bool flag);
     readOptions();
+    bool ** load(QString file);
 };
 
 #endif // MENU_H

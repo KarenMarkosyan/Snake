@@ -2,9 +2,9 @@
 #include "Painter.h"
 #include "Field.h"
 
-Game::Game(int w, int h)
+Game::Game(int w, int h, bool **f)
 {
-    m_field = new Field(w,h);
+    m_field = new Field(w,h,f);
     m_snake = new Snake;
     m_maxSize = m_snake->maxSize();
     m_status = m_snake->status();

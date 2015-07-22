@@ -13,21 +13,24 @@ int Field::getH()
     return *hp;
 }
 
-Field::Field(int w, int h)
+Field::Field(int w, int h, bool **f)
 {
     this->h = h;
     this->w  = w;
+    this->f  = f;
     wp = &this->w;
     hp = &this->h;
+
     m_m = new Type *[h];
     for (int i = 0; i < h; ++i)
         m_m[i] = new Type [w];
 
     for ( int y = 0; y < h; ++y ) {
         for ( int x = 0; x < w; ++x ) {
-            m_m[y][x] = Field::EMPTY;
+            m_m[y][x] = f[y][x] ? Field::BARRIER : Field::EMPTY;
         }
     }
+
 
     this->newO(FRUIT);
 }
@@ -94,7 +97,7 @@ void Field::clear()
 {
     for ( int y = 0; y < h; ++y ) {
         for ( int x = 0; x < w; ++x ) {
-            m_m[y][x] = Field::EMPTY;
+           m_m[y][x] = f[y][x] ? Field::BARRIER : Field::EMPTY;
         }
     }
 
