@@ -1,8 +1,11 @@
-#include "painter.h"
+#include "Painter.h"
 #include <QDebug>
 
-painter::painter( QOpenGLShaderProgram *program) :
-    m_program( program )
+Painter::Painter( QOpenGLShaderProgram *program, int vertexAttr,
+                  int colorAttr ) :
+    m_program( program ),
+    m_vertexAttr( vertexAttr ),
+    m_colorAttr( colorAttr )
 {
     m_verticesOfBar.resize( 18 );
     m_verticesOfCircle.resize( 18 );
@@ -12,7 +15,7 @@ painter::painter( QOpenGLShaderProgram *program) :
     initBrownColor();
 }
 
-void painter::bar(int x1, int y1, int x2, int y2 , bool isGreen)
+void Painter::bar(int x1, int y1, int x2, int y2 , bool isGreen)
 {
     // 0
     m_verticesOfBar[0] = x1;
@@ -49,7 +52,7 @@ void painter::bar(int x1, int y1, int x2, int y2 , bool isGreen)
         draw( m_verticesOfBar, m_brownColor );
 }
 
-void painter::circle( int x, int y, int radius )
+void Painter::circle( int x, int y, int radius )
 {
     // 0
     m_verticesOfCircle[0] = x - radius;
@@ -84,7 +87,7 @@ void painter::circle( int x, int y, int radius )
     draw( m_verticesOfCircle, m_redColor );
 }
 
-void painter::initGreenColor()
+void Painter::initGreenColor()
 {
     m_greenColor.resize( 18 );
 
@@ -96,7 +99,7 @@ void painter::initGreenColor()
     }
 }
 
-void painter::initRedColor()
+void Painter::initRedColor()
 {
     m_redColor.resize( 18 );
 
@@ -108,7 +111,7 @@ void painter::initRedColor()
     }
 }
 
-void painter::initBrownColor()
+void Painter::initBrownColor()
 {
     m_brownColor.resize( 18 );
 
@@ -120,11 +123,9 @@ void painter::initBrownColor()
     }
 }
 
-void painter::draw( const std::vector<float> &vertices,const std::vector<float> &colors)
+void Painter::draw( const std::vector<float> &vertices,
+                    const std::vector<float> &colors)
 {
-    int m_vertexAttr = m_program->attributeLocation( "vertexAttr" );
-    int m_colorAttr  = m_program->attributeLocation( "colorAttr" );
-
     m_program->setAttributeArray( m_vertexAttr, vertices.data(), 3 );
     m_program->setAttributeArray( m_colorAttr, colors.data(), 3 );
 

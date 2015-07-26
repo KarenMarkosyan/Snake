@@ -36,44 +36,15 @@ private slots:
 private:
     Ui::menu *ui;
     //Текущее конфигурации
-    /*!
-     * \brief h - высота
-     */
-    int h;
-    /*!
-     * \brief w - ширина
-     */
-    int w;
-    /*!
-     * \brief s - скорость
-     */
-    int s;
-    /*!
-     * \brief isPause - пауза
-     */
+    int h; //Высота
+    int w; //Ширина
+    int s; //Скорость
+    //
     bool isPause;
-    /*!
-     * \brief isOptions - открыто меню конфигураций
-     */
     bool isOptions;
-    /*!
-     * \brief gF - указатель на игровой виджет
-     */
     gameField *gF;
-    /*!
-     * \brief showHideOptions - показать/скрыть меню конфигураций
-     * \param flag
-     */
     showHideOptions(bool flag);
-    /*!
-     * \brief readOptions - сохранить текущую конфигурацию
-     */
     readOptions();
-    /*!
-     * \brief load - загрузить поле из файла
-     * \param file - имя файла
-     * \return карта
-     */
     bool ** load(QString file);
 };
 

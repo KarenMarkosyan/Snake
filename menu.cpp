@@ -101,7 +101,7 @@ void menu::on_cancell_clicked()
 
 void menu::on_newGame_clicked()
 {
-    gF = new gameField(w, h, s, NULL);
+    gF = new gameField(w, h, s);
     gF->show();
     connect(gF, SIGNAL(windowTitleChanged(QString)), this, SLOT(CLEAR()));
 }

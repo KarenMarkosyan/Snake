@@ -24,15 +24,15 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="scene" name="fieldWidget" native="true"/>
+    <widget class="Scene" name="fieldWidget" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>scene</class>
+   <class>Scene</class>
    <extends>QWidget</extends>
-   <header>scene.h</header>
+   <header>Scene.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

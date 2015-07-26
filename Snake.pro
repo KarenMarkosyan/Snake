@@ -16,23 +16,23 @@ SOURCES += main.cpp\
         menu.cpp \
     gamefield.cpp \
     field.cpp \
-    fruit.cpp \
-    game.cpp \
-    painter.cpp \
-    scene.cpp \
-    snake.cpp
+    Fruit.cpp \
+    Game.cpp \
+    Painter.cpp \
+    Scene.cpp \
+    Snake.cpp
 
 HEADERS  += menu.h \
     gamefield.h \
     field.h \
-    fruit.h \
-    game.h \
-    painter.h \
-    scene.h \
-    snake.h
+    Fruit.h \
+    Game.h \
+    Painter.h \
+    Scene.h \
+    Snake.h
 
 FORMS    += menu.ui \
     gamefield.ui
 
 RESOURCES += \
-    shaders.qrc
+    Shaders.qrc

@@ -16,7 +16,6 @@ gameField::gameField(int w, int h, int s, bool **f, QWidget *parent) :
 
 gameField::~gameField()
 {
-
     delete ui->fieldWidget;
     delete ui;
 }

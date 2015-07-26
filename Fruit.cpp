@@ -1,17 +1,17 @@
-#include "fruit.h"
-#include "field.h"
+#include "Fruit.h"
+#include "Field.h"
 
-fruit::fruit( int x, int y ) :
+Fruit::Fruit( int x, int y ) :
     m_x( x ),
     m_y( y )
 {
 }
 
-bool fruit::draw( field &f ) const
+bool Fruit::draw( Field &f ) const
 {
-    if ( f.block( m_x, m_y ) != field::EMPTY ) {
+    if ( f.block( m_x, m_y ) != Field::EMPTY ) {
         return false;
     }
-    f.setBlock( field::FRUIT, m_x, m_y );
+    f.setBlock( Field::FRUIT, m_x, m_y );
     return true;
 }
