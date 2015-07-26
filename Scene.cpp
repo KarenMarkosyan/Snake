@@ -1,10 +1,9 @@
 #include <QMatrix4x4>
-#include "Scene.h"
-#include "Painter.h"
+#include "scene.h"
+#include "painter.h"
 
-Scene::Scene( QWidget *parent ) :
-    QOpenGLWidget( parent ),
-    m_maxSize( 0 )
+scene::scene( QWidget *parent ) :
+    QOpenGLWidget( parent )
 {
     this->setFocusPolicy( Qt::StrongFocus );
     w = 0;
@@ -16,16 +15,15 @@ Scene::Scene( QWidget *parent ) :
 
 }
 
-Scene::~Scene()
+scene::~scene()
 {
     delete m_game;
 }
 
-void Scene::setSize(int wS, int hS, int s, bool **f)
+void scene::setSize(int wS, int hS, int s, bool **f)
 {
     sp = 100 * 10/s;
-    m_game = new Game(wS, hS, f);
-    m_maxSize = m_game->snakeMaxSize();
+    m_game = new game(wS, hS, f);
     m_game->newGame();
     sendStatus();
     m_timer.start( sp );
@@ -34,21 +32,21 @@ void Scene::setSize(int wS, int hS, int s, bool **f)
     paintGL();
 }
 
-void Scene::slotUpdate()
+void scene::slotUpdate()
 {
-    Snake::Status status = m_game->status();
+    snake::Status status = m_game->status();
 
     switch( status ) {
-        case Snake::LIVE:
+        case snake::LIVE:
             break;
-        case Snake::INCREASED:
+        case snake::INCREASED:
             sendStatus();
             break;
-        case Snake::DEAD:
+        case snake::DEAD:
             m_game->newGame();
             sendStatus();
             break;
-        case Snake::WIN:
+        case snake::WIN:
             m_timer.stop();
             sendStatus();
             return;
@@ -58,12 +56,7 @@ void Scene::slotUpdate()
     update();
 }
 
-void Scene::slotSnakeSize( size_t size )
-{
-    QString status = QString::number( size );
-}
-
-void Scene::initializeGL()
+void scene::initializeGL()
 {
     glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
 
@@ -74,7 +67,7 @@ void Scene::initializeGL()
     fShader.compileSourceFile( ":/Shaders/fShader.glsl" );
 
     m_program.addShader( &vShader );
-    m_program.addShader( &fShader );
+m_program.addShader( &fShader );
 
     if ( !m_program.link() )
     {
@@ -82,12 +75,9 @@ void Scene::initializeGL()
         return;
     }
 
-    m_vertexAttr = m_program.attributeLocation( "vertexAttr" );
-    m_colorAttr = m_program.attributeLocation( "colorAttr" );
-    m_matrixUniform = m_program.uniformLocation( "matrix" );
 }
 
-void Scene::paintGL()
+void scene::paintGL()
 {
     // Clear the window with current clearing color
     glClear( GL_COLOR_BUFFER_BIT );
@@ -98,9 +88,9 @@ void Scene::paintGL()
     QMatrix4x4 matrix;
     matrix.ortho( 0.0f, w, h, 0.0f, -1.0f, 1.0f );
     //matrix.translate( 0.0f, 0.0f, -0.5f );
-    m_program.setUniformValue( m_matrixUniform, matrix );
+    m_program.setUniformValue( m_program.uniformLocation( "matrix" ), matrix );
 
-    Painter p( &m_program, m_vertexAttr, m_colorAttr );
+    painter p(&m_program);
 
     if ( m_timer.isActive() ) {
         m_game->draw( p );
@@ -109,26 +99,26 @@ void Scene::paintGL()
     m_program.release();
 }
 
-void Scene::resizeGL( int w, int h )
+void scene::resizeGL( int w, int h )
 {
     glViewport( 0, 0, w, h );
 
 }
 
-void Scene::keyPressEvent( QKeyEvent *event )
+void scene::keyPressEvent( QKeyEvent *event )
 {
     switch ( event->key() ) {
         case Qt::Key_A:
-            m_game->keyEvent( Snake::LEFT );
+            m_game->keyEvent( snake::LEFT );
             break;
         case Qt::Key_W:
-            m_game->keyEvent( Snake::UP );
+            m_game->keyEvent( snake::UP );
             break;
         case Qt::Key_D:
-            m_game->keyEvent( Snake::RIGHT );
+            m_game->keyEvent( snake::RIGHT );
             break;
         case Qt::Key_S:
-            m_game->keyEvent( Snake::DOWN );
+            m_game->keyEvent( snake::DOWN );
             break;
         case Qt::Key_Space:
             m_game->newGame();
@@ -138,8 +128,8 @@ void Scene::keyPressEvent( QKeyEvent *event )
     }
 }
 
-void Scene::sendStatus()
+void scene::sendStatus()
 {
     size_t points = m_game->snakeSize();
-    emit signalShowStatus( QString( "%1/%2" ).arg( points ).arg( m_maxSize ) );
+    emit signalShowStatus( QString( "%1/%2" ).arg( points ).arg( m_game->snakeMaxSize() ) );
 }

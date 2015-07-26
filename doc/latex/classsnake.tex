@@ -1,0 +1,115 @@
+\hypertarget{classsnake}{}\section{snake Class Reference}
+\label{classsnake}\index{snake@{snake}}
+
+
+The snake class -\/ класс змейки  
+
+
+
+
+{\ttfamily \#include $<$Snake.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classsnake_a490fdfa738dec404d2fea835645d66c2}{}enum \hyperlink{classsnake_a490fdfa738dec404d2fea835645d66c2}{Status} \{ {\bfseries I\+N\+C\+R\+E\+A\+S\+E\+D}, 
+{\bfseries L\+I\+V\+E}, 
+{\bfseries W\+I\+N}, 
+{\bfseries D\+E\+A\+D}
+ \}\label{classsnake_a490fdfa738dec404d2fea835645d66c2}
+
+\begin{DoxyCompactList}\small\item\em The Status enum -\/ перечисление статусов змейки \end{DoxyCompactList}\item 
+\hypertarget{classsnake_adbd63ec22af655a4827ae26c7b9f5216}{}enum \hyperlink{classsnake_adbd63ec22af655a4827ae26c7b9f5216}{Direction} \{ {\bfseries L\+E\+F\+T}, 
+{\bfseries U\+P}, 
+{\bfseries R\+I\+G\+H\+T}, 
+{\bfseries D\+O\+W\+N}
+ \}\label{classsnake_adbd63ec22af655a4827ae26c7b9f5216}
+
+\begin{DoxyCompactList}\small\item\em The Direction enum -\/ типы управляющих сигналов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classsnake_aebbd5eaa3883afef2f04ac6fdeef8f16}{}\hyperlink{classsnake_aebbd5eaa3883afef2f04ac6fdeef8f16}{snake} ()\label{classsnake_aebbd5eaa3883afef2f04ac6fdeef8f16}
+
+\begin{DoxyCompactList}\small\item\em snake -\/ конструктор по умолчанию \end{DoxyCompactList}\item 
+void \hyperlink{classsnake_a30f284fce27e7a341f5b2ca4c7f92205}{tick} (\hyperlink{classfield}{field} \&f)
+\begin{DoxyCompactList}\small\item\em tick -\/ обработчик таймера \end{DoxyCompactList}\item 
+\hypertarget{classsnake_a3a64ec5039d750a8cca1a47bdf972374}{}void \hyperlink{classsnake_a3a64ec5039d750a8cca1a47bdf972374}{key\+Event} (\hyperlink{classsnake_adbd63ec22af655a4827ae26c7b9f5216}{Direction})\label{classsnake_a3a64ec5039d750a8cca1a47bdf972374}
+
+\begin{DoxyCompactList}\small\item\em key\+Event -\/ обработчик управляющего сигнала \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classsnake_ae9043689d98ec59bb7a0afb601461e5e}{size} () const 
+\begin{DoxyCompactList}\small\item\em size -\/ получить текущий размер \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classsnake_aa79ee99cd65b737e832572d70ff44284}{max\+Size} () const 
+\begin{DoxyCompactList}\small\item\em max\+Size -\/ получить максимальный размер \end{DoxyCompactList}\item 
+\hyperlink{classsnake_a490fdfa738dec404d2fea835645d66c2}{snake\+::\+Status} \hyperlink{classsnake_a28a57bf80bb710ac1381353031e0752b}{status} () const 
+\begin{DoxyCompactList}\small\item\em status -\/ получить текущий статус змейки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The snake class -\/ класс змейки 
+
+\subsection{Member Function Documentation}
+\hypertarget{classsnake_aa79ee99cd65b737e832572d70ff44284}{}\index{snake@{snake}!max\+Size@{max\+Size}}
+\index{max\+Size@{max\+Size}!snake@{snake}}
+\subsubsection[{max\+Size}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t snake\+::max\+Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classsnake_aa79ee99cd65b737e832572d70ff44284}
+
+
+max\+Size -\/ получить максимальный размер 
+
+\begin{DoxyReturn}{Returns}
+размер 
+\end{DoxyReturn}
+\hypertarget{classsnake_ae9043689d98ec59bb7a0afb601461e5e}{}\index{snake@{snake}!size@{size}}
+\index{size@{size}!snake@{snake}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t snake\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classsnake_ae9043689d98ec59bb7a0afb601461e5e}
+
+
+size -\/ получить текущий размер 
+
+\begin{DoxyReturn}{Returns}
+-\/ размер 
+\end{DoxyReturn}
+\hypertarget{classsnake_a28a57bf80bb710ac1381353031e0752b}{}\index{snake@{snake}!status@{status}}
+\index{status@{status}!snake@{snake}}
+\subsubsection[{status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf snake\+::\+Status} snake\+::status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classsnake_a28a57bf80bb710ac1381353031e0752b}
+
+
+status -\/ получить текущий статус змейки 
+
+\begin{DoxyReturn}{Returns}
+-\/ статус 
+\end{DoxyReturn}
+\hypertarget{classsnake_a30f284fce27e7a341f5b2ca4c7f92205}{}\index{snake@{snake}!tick@{tick}}
+\index{tick@{tick}!snake@{snake}}
+\subsubsection[{tick}]{\setlength{\rightskip}{0pt plus 5cm}void snake\+::tick (
+\begin{DoxyParamCaption}
+\item[{{\bf field} \&}]{f}
+\end{DoxyParamCaption}
+)}\label{classsnake_a30f284fce27e7a341f5b2ca4c7f92205}
+
+
+tick -\/ обработчик таймера 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & -\/ ссылка на поле на котором находится змея \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Snake.\+h\item 
+snake.\+cpp\end{DoxyCompactItemize}
