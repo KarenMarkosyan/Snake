@@ -1,0 +1,194 @@
+\hypertarget{classfield}{}\section{field Class Reference}
+\label{classfield}\index{field@{field}}
+
+
+The field class -\/ класс описывает модель поля  
+
+
+
+
+{\ttfamily \#include $<$field.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfield_a4910f59c849d43bf598b42fc47c91fba}{}enum \hyperlink{classfield_a4910f59c849d43bf598b42fc47c91fba}{Type} \{ {\bfseries E\+M\+P\+T\+Y}, 
+{\bfseries S\+N\+A\+K\+E\+\_\+\+B\+L\+O\+C\+K}, 
+{\bfseries F\+R\+U\+I\+T}, 
+{\bfseries B\+A\+R\+R\+I\+E\+R}
+ \}\label{classfield_a4910f59c849d43bf598b42fc47c91fba}
+
+\begin{DoxyCompactList}\small\item\em The Type enum -\/ тип блока (Пустое поле, часть змеи, фрукт, препядствие) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfield_a26b09d2e9cf52d1dca855e4b2b0ecc1c}{field} (int w, int h, bool $\ast$$\ast$f)
+\begin{DoxyCompactList}\small\item\em field -\/ строит поле заданного размера с заданым набором препядствий \end{DoxyCompactList}\item 
+void \hyperlink{classfield_abab6fad3d032bfbf90b01061a94ace8f}{set\+Block} (\hyperlink{classfield_a4910f59c849d43bf598b42fc47c91fba}{Type} type, int x, int y)
+\begin{DoxyCompactList}\small\item\em set\+Block -\/ задать значение блока \end{DoxyCompactList}\item 
+\hyperlink{classfield_a4910f59c849d43bf598b42fc47c91fba}{Type} \hyperlink{classfield_aaa9d47268100ef05881a520a0a3cd03b}{block} (int x, int y) const 
+\begin{DoxyCompactList}\small\item\em block -\/ получить значение блока \end{DoxyCompactList}\item 
+void \hyperlink{classfield_ae47f26cdf47b171204c3227c3246e307}{draw} (\hyperlink{classpainter}{painter} \&p) const 
+\begin{DoxyCompactList}\small\item\em draw -\/ отображает заданный приметив на поле \end{DoxyCompactList}\item 
+void \hyperlink{classfield_a45a3a4059cd2878eb9dba6bfb7ef6b26}{new\+O} (\hyperlink{classfield_a4910f59c849d43bf598b42fc47c91fba}{Type} t)
+\begin{DoxyCompactList}\small\item\em new\+O -\/ создает новый объект заданого типа в случайной позиции \end{DoxyCompactList}\item 
+\hypertarget{classfield_ae97437dfcb63a1bf1a3c5184d660581e}{}void \hyperlink{classfield_ae97437dfcb63a1bf1a3c5184d660581e}{clear} ()\label{classfield_ae97437dfcb63a1bf1a3c5184d660581e}
+
+\begin{DoxyCompactList}\small\item\em clear -\/ отчишает поле \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classfield_ad7e4bc6120a1361f6a35fd971b1f3117}{get\+W} ()
+\begin{DoxyCompactList}\small\item\em get\+W -\/ получить ширину последнего созданного поля \end{DoxyCompactList}\item 
+static int \hyperlink{classfield_a448b10832582b5d2d3d6d8df9ce9a900}{get\+H} ()
+\begin{DoxyCompactList}\small\item\em get\+H -\/ получить высоту последнего созданного поля \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfield_a289fd27a869500e67777681600857c5a}{}const int \hyperlink{classfield_a289fd27a869500e67777681600857c5a}{B\+L\+O\+C\+K\+\_\+\+W\+I\+D\+T\+H} = 10\label{classfield_a289fd27a869500e67777681600857c5a}
+
+\begin{DoxyCompactList}\small\item\em B\+L\+O\+C\+K\+\_\+\+W\+I\+D\+T\+H -\/ ширина одного блока изображения \end{DoxyCompactList}\item 
+\hypertarget{classfield_a6a662370eedab7fd586e15f1f8ee49cc}{}const int \hyperlink{classfield_a6a662370eedab7fd586e15f1f8ee49cc}{B\+L\+O\+C\+K\+\_\+\+H\+E\+I\+G\+H\+T} = 10\label{classfield_a6a662370eedab7fd586e15f1f8ee49cc}
+
+\begin{DoxyCompactList}\small\item\em B\+L\+O\+C\+K\+\_\+\+H\+E\+I\+G\+H\+T -\/ высота одного блока изображения \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The field class -\/ класс описывает модель поля 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfield_a26b09d2e9cf52d1dca855e4b2b0ecc1c}{}\index{field@{field}!field@{field}}
+\index{field@{field}!field@{field}}
+\subsubsection[{field}]{\setlength{\rightskip}{0pt plus 5cm}field\+::field (
+\begin{DoxyParamCaption}
+\item[{int}]{w, }
+\item[{int}]{h, }
+\item[{bool $\ast$$\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{classfield_a26b09d2e9cf52d1dca855e4b2b0ecc1c}
+
+
+field -\/ строит поле заданного размера с заданым набором препядствий 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ ширина \\
+\hline
+{\em h} & -\/ высота \\
+\hline
+{\em f} & -\/ ката препядствий \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfield_aaa9d47268100ef05881a520a0a3cd03b}{}\index{field@{field}!block@{block}}
+\index{block@{block}!field@{field}}
+\subsubsection[{block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\+::\+Type} field\+::block (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+) const}\label{classfield_aaa9d47268100ef05881a520a0a3cd03b}
+
+
+block -\/ получить значение блока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & -\/ положение по горизонтали \\
+\hline
+{\em y} & -\/ положение по вертикали \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ тип блока 
+\end{DoxyReturn}
+\hypertarget{classfield_ae47f26cdf47b171204c3227c3246e307}{}\index{field@{field}!draw@{draw}}
+\index{draw@{draw}!field@{field}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void field\+::draw (
+\begin{DoxyParamCaption}
+\item[{{\bf painter} \&}]{p}
+\end{DoxyParamCaption}
+) const}\label{classfield_ae47f26cdf47b171204c3227c3246e307}
+
+
+draw -\/ отображает заданный приметив на поле 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ приметив \\
+\hline
+\end{DoxyParams}
+\hypertarget{classfield_a448b10832582b5d2d3d6d8df9ce9a900}{}\index{field@{field}!get\+H@{get\+H}}
+\index{get\+H@{get\+H}!field@{field}}
+\subsubsection[{get\+H}]{\setlength{\rightskip}{0pt plus 5cm}int field\+::get\+H (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classfield_a448b10832582b5d2d3d6d8df9ce9a900}
+
+
+get\+H -\/ получить высоту последнего созданного поля 
+
+\begin{DoxyReturn}{Returns}
+высота 
+\end{DoxyReturn}
+\hypertarget{classfield_ad7e4bc6120a1361f6a35fd971b1f3117}{}\index{field@{field}!get\+W@{get\+W}}
+\index{get\+W@{get\+W}!field@{field}}
+\subsubsection[{get\+W}]{\setlength{\rightskip}{0pt plus 5cm}int field\+::get\+W (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classfield_ad7e4bc6120a1361f6a35fd971b1f3117}
+
+
+get\+W -\/ получить ширину последнего созданного поля 
+
+\begin{DoxyReturn}{Returns}
+ширина 
+\end{DoxyReturn}
+\hypertarget{classfield_a45a3a4059cd2878eb9dba6bfb7ef6b26}{}\index{field@{field}!new\+O@{new\+O}}
+\index{new\+O@{new\+O}!field@{field}}
+\subsubsection[{new\+O}]{\setlength{\rightskip}{0pt plus 5cm}void field\+::new\+O (
+\begin{DoxyParamCaption}
+\item[{{\bf field\+::\+Type}}]{t}
+\end{DoxyParamCaption}
+)}\label{classfield_a45a3a4059cd2878eb9dba6bfb7ef6b26}
+
+
+new\+O -\/ создает новый объект заданого типа в случайной позиции 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/ тип \\
+\hline
+\end{DoxyParams}
+\hypertarget{classfield_abab6fad3d032bfbf90b01061a94ace8f}{}\index{field@{field}!set\+Block@{set\+Block}}
+\index{set\+Block@{set\+Block}!field@{field}}
+\subsubsection[{set\+Block}]{\setlength{\rightskip}{0pt plus 5cm}void field\+::set\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf field\+::\+Type}}]{type, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{classfield_abab6fad3d032bfbf90b01061a94ace8f}
+
+
+set\+Block -\/ задать значение блока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/ тип блока \\
+\hline
+{\em x} & -\/ положение по горизонтали \\
+\hline
+{\em y} & -\/ положение по вертикали \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+field.\+h\item 
+field.\+cpp\end{DoxyCompactItemize}

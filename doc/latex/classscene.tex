@@ -1,0 +1,83 @@
+\hypertarget{classscene}{}\section{scene Class Reference}
+\label{classscene}\index{scene@{scene}}
+
+
+The scene class -\/ класс виждета игры -\/ осуществляет управление игровы процессом и его отображение  
+
+
+
+
+{\ttfamily \#include $<$scene.\+h$>$}
+
+Inheritance diagram for scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classscene}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classscene_a63ee03bf6251756564be417b7ebd5ef5}{signal\+Show\+Status} (const Q\+String \&status)
+\begin{DoxyCompactList}\small\item\em signal\+Show\+Status -\/ сигнал для передачи сообщеният в статусную строку \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classscene_ac93fe52e7b2f23b16705b6cd79ab3d66}{}{\bfseries scene} (Q\+Widget $\ast$parent=0)\label{classscene_ac93fe52e7b2f23b16705b6cd79ab3d66}
+
+\item 
+void \hyperlink{classscene_a3a5609dc2e28d4541c5f2e10b5103ef3}{set\+Size} (int w\+S, int h\+S, int s, bool $\ast$$\ast$f)
+\begin{DoxyCompactList}\small\item\em set\+Size -\/ передает основные игровые параметры объекту игры \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The scene class -\/ класс виждета игры -\/ осуществляет управление игровы процессом и его отображение 
+
+\subsection{Member Function Documentation}
+\hypertarget{classscene_a3a5609dc2e28d4541c5f2e10b5103ef3}{}\index{scene@{scene}!set\+Size@{set\+Size}}
+\index{set\+Size@{set\+Size}!scene@{scene}}
+\subsubsection[{set\+Size}]{\setlength{\rightskip}{0pt plus 5cm}void scene\+::set\+Size (
+\begin{DoxyParamCaption}
+\item[{int}]{w\+S, }
+\item[{int}]{h\+S, }
+\item[{int}]{s, }
+\item[{bool $\ast$$\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{classscene_a3a5609dc2e28d4541c5f2e10b5103ef3}
+
+
+set\+Size -\/ передает основные игровые параметры объекту игры 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+S} & -\/ ширина поля \\
+\hline
+{\em h\+S} & -\/ высота поля \\
+\hline
+{\em s} & -\/ временной промежуток обновления таймера \\
+\hline
+{\em f} & -\/ карта препядствий \\
+\hline
+\end{DoxyParams}
+\hypertarget{classscene_a63ee03bf6251756564be417b7ebd5ef5}{}\index{scene@{scene}!signal\+Show\+Status@{signal\+Show\+Status}}
+\index{signal\+Show\+Status@{signal\+Show\+Status}!scene@{scene}}
+\subsubsection[{signal\+Show\+Status}]{\setlength{\rightskip}{0pt plus 5cm}void scene\+::signal\+Show\+Status (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{classscene_a63ee03bf6251756564be417b7ebd5ef5}
+
+
+signal\+Show\+Status -\/ сигнал для передачи сообщеният в статусную строку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & -\/ сообщение \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+scene.\+h\item 
+scene.\+cpp\end{DoxyCompactItemize}

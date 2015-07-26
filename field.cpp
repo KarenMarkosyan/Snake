@@ -1,19 +1,19 @@
 #include <cstdlib>
 #include <ctime>
-#include "Field.h"
+#include "field.h"
 #include "Painter.h"
 
-int Field::getW()
+int field::getW()
 {
     return *wp;
 }
 
-int Field::getH()
+int field::getH()
 {
     return *hp;
 }
 
-Field::Field(int w, int h, bool **f)
+field::field(int w, int h, bool **f)
 {
     this->h = h;
     this->w  = w;
@@ -27,7 +27,7 @@ Field::Field(int w, int h, bool **f)
 
     for ( int y = 0; y < h; ++y ) {
         for ( int x = 0; x < w; ++x ) {
-            m_m[y][x] = f[y][x] ? Field::BARRIER : Field::EMPTY;
+            m_m[y][x] = (f != 0x0 && f[y][x]) ? field::BARRIER : field::EMPTY;
         }
     }
 
@@ -35,52 +35,52 @@ Field::Field(int w, int h, bool **f)
     this->newO(FRUIT);
 }
 
-Field::~Field()
+field::~field()
 {
     for (int i = 0; i < h; ++i)
         delete[] m_m[i];
     delete[] m_m;
 }
 
-void Field::setBlock( Field::Type type, int x, int y )
+void field::setBlock( field::Type type, int x, int y )
 {
     m_m[y][x] = type;
 }
 
-Field::Type Field::block( int x, int y ) const
+field::Type field::block( int x, int y ) const
 {
     return m_m[y][x];
 }
 
-void Field::draw( Painter &p ) const
+void field::draw( painter &p ) const
 {
     for ( int y = 0; y < h; ++y ) {
         for ( int x = 0; x < w; ++x ) {
             switch ( m_m[y][x] ) {
-            case Field::EMPTY:
+            case field::EMPTY:
                 break;
-            case Field::BARRIER:
-                p.bar( x * Field::BLOCK_WIDTH,
-                       y * Field::BLOCK_HEIGHT,
-                       ( x + 1 ) * Field::BLOCK_WIDTH - 1,
-                       ( y + 1 ) * Field::BLOCK_HEIGHT - 1 , false);
+            case field::BARRIER:
+                p.bar( x * field::BLOCK_WIDTH,
+                       y * field::BLOCK_HEIGHT,
+                       ( x + 1 ) * field::BLOCK_WIDTH - 1,
+                       ( y + 1 ) * field::BLOCK_HEIGHT - 1 , false);
                 break;
-            case Field::SNAKE_BLOCK:
-                p.bar( x * Field::BLOCK_WIDTH,
-                       y * Field::BLOCK_HEIGHT,
-                       ( x + 1 ) * Field::BLOCK_WIDTH - 1,
-                       ( y + 1 ) * Field::BLOCK_HEIGHT - 1 , true);
+            case field::SNAKE_BLOCK:
+                p.bar( x * field::BLOCK_WIDTH,
+                       y * field::BLOCK_HEIGHT,
+                       ( x + 1 ) * field::BLOCK_WIDTH - 1,
+                       ( y + 1 ) * field::BLOCK_HEIGHT - 1 , true);
                 break;
-            case Field::FRUIT:
-                p.circle( x * Field::BLOCK_WIDTH + Field::BLOCK_WIDTH / 2,
-                          y * Field::BLOCK_HEIGHT + Field::BLOCK_HEIGHT / 2,
-                          Field::BLOCK_WIDTH / 2 - 1 );
+            case field::FRUIT:
+                p.circle( x * field::BLOCK_WIDTH + field::BLOCK_WIDTH / 2,
+                          y * field::BLOCK_HEIGHT + field::BLOCK_HEIGHT / 2,
+                          field::BLOCK_WIDTH / 2 - 1 );
             }
         }
     }
 }
 
-void Field::newO(Field::Type t)
+void field::newO(field::Type t)
 {
 
     int x, y;
@@ -88,20 +88,20 @@ void Field::newO(Field::Type t)
     do {
         x = std::rand() % w;
         y = std::rand() % h;
-    } while ( this->block( x, y ) != Field::EMPTY );
+    } while ( this->block( x, y ) != field::EMPTY );
     this->setBlock( t, x, y );
 }
 
 
-void Field::clear()
+void field::clear()
 {
     for ( int y = 0; y < h; ++y ) {
         for ( int x = 0; x < w; ++x ) {
-           m_m[y][x] = f[y][x] ? Field::BARRIER : Field::EMPTY;
+           m_m[y][x] = (f != 0x0 && f[y][x]) ? field::BARRIER : field::EMPTY;
         }
     }
 
     this->newO(FRUIT);
 }
-int *Field::wp = 0;
-int *Field::hp = 0;
+int *field::wp = 0;
+int *field::hp = 0;

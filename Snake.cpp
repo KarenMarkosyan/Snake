@@ -1,98 +1,98 @@
 #include <cstdlib>
 #include <ctime>
-#include "Snake.h"
-#include "Field.h"
+#include "snake.h"
+#include "field.h"
 
-Snake::Snake()
+snake::snake()
 {
-    m_status = Snake::LIVE;
-    m_maxSize = 20;
+    m_status = snake::LIVE;
+    m_maxSize = (field::getW() + field::getH()) / 2;
     std::srand( std::time( NULL ) );
     std::rand();
-    m_direction = static_cast<Snake::Direction>( std::rand() % 4 );
-    m_blocks.push_back( std::pair<int, int>( Field::getW() / 2,
-                                             Field::getH() / 2 ) );
+    m_direction = static_cast<snake::Direction>( std::rand() % 4 );
+    m_blocks.push_back( std::pair<int, int>( field::getW() / 2,
+                                             field::getH() / 2 ) );
 }
 
-Snake::Status Snake::status() const
+snake::Status snake::status() const
 {
     return m_status;
 }
 
-void Snake::tick( Field &field )
+void snake::tick(field &f )
 {
     std::pair<int, int> p = m_blocks.front();
     switch ( m_direction ) {
-        case Snake::LEFT:
+        case snake::LEFT:
             --( p.first );
             break;
-        case Snake::UP:
+        case snake::UP:
             --( p.second );
             break;
-        case Snake::RIGHT:
+        case snake::RIGHT:
             ++( p.first );
             break;
-        case Snake::DOWN:
+        case snake::DOWN:
             ++( p.second );
             break;
     }
 
-    if ( ( p.first < 0 ) || ( p.first >= Field::getW() ) ||
-         ( p.second < 0) || ( p.second >= Field::getH() ) ) {
-        m_status = Snake::DEAD;
+    if ( ( p.first < 0 ) || ( p.first >= field::getW() ) ||
+         ( p.second < 0) || ( p.second >= field::getH() ) ) {
+        m_status = snake::DEAD;
         return;
     }
 
-    if ( field.block( p.first, p.second ) == Field::SNAKE_BLOCK || field.block( p.first, p.second ) == Field::BARRIER) {
-        m_status = Snake::DEAD;
+    if ( f.block( p.first, p.second ) == field::snake_BLOCK || f.block( p.first, p.second ) == field::BARRIER) {
+        m_status = snake::DEAD;
         return;
     }
 
     m_blocks.push_front( p );
 
-    if ( field.block( p.first, p.second ) != Field::FRUIT ) {
-        field.setBlock( Field::SNAKE_BLOCK, p.first, p.second );
+    if ( f.block( p.first, p.second ) != field::FRUIT ) {
+        f.setBlock( field::snake_BLOCK, p.first, p.second );
         std::pair<int, int> p = m_blocks.back();
-        field.setBlock( Field::EMPTY, p.first, p.second );
+        f.setBlock( field::EMPTY, p.first, p.second );
         m_blocks.pop_back();
-        m_status = Snake::LIVE;
+        m_status = snake::LIVE;
     } else {
-        field.setBlock( Field::SNAKE_BLOCK, p.first, p.second );
-        field.newO(Field::FRUIT);
-        field.newO(Field::BARRIER);
-        m_status = Snake::INCREASED;
+        f.setBlock( field::snake_BLOCK, p.first, p.second );
+        f.newO(field::FRUIT);
+        f.newO(field::BARRIER);
+        m_status = snake::INCREASED;
     }
 
     if ( m_blocks.size() == m_maxSize ) {
-        m_status = Snake::WIN;
+        m_status = snake::WIN;
         return;
     }
 }
 
-void Snake::keyEvent( Snake::Direction d )
+void snake::keyEvent( snake::Direction d )
 {
     if ( d == m_direction ) {
         return;
     }
 
     switch ( d ) {
-        case Snake::LEFT:
-            if ( m_direction == Snake::RIGHT ) {
+        case snake::LEFT:
+            if ( m_direction == snake::RIGHT ) {
                 return;
             }
             break;
-        case Snake::UP:
-            if ( m_direction == Snake::DOWN ) {
+        case snake::UP:
+            if ( m_direction == snake::DOWN ) {
                 return;
             }
             break;
-        case Snake::RIGHT:
-            if ( m_direction == Snake::LEFT ) {
+        case snake::RIGHT:
+            if ( m_direction == snake::LEFT ) {
                 return;
             }
             break;
-        case Snake::DOWN:
-            if ( m_direction == Snake::UP ) {
+        case snake::DOWN:
+            if ( m_direction == snake::UP ) {
                 return;
             }
             break;
@@ -101,12 +101,12 @@ void Snake::keyEvent( Snake::Direction d )
     m_direction = d;
 }
 
-size_t Snake::maxSize() const
+size_t snake::maxSize() const
 {
     return m_maxSize;
 }
 
-size_t Snake::size() const
+size_t snake::size() const
 {
     return m_blocks.size();
 }

@@ -1,71 +1,54 @@
-#include "Game.h"
-#include "Painter.h"
-#include "Field.h"
+#include "game.h"
+#include "painter.h"
+#include "field.h"
 
-Game::Game(int w, int h, bool **f)
+game::game(int w, int h, bool **f)
 {
-    m_field = new Field(w,h,f);
-    m_snake = new Snake;
-    m_maxSize = m_snake->maxSize();
+    m_field = new field(w,h,f);
+    m_snake = new snake;
     m_status = m_snake->status();
 }
 
-Game::~Game()
+game::~game()
 {
     delete m_snake;
     delete m_field;
 }
 
-void Game::draw( Painter &p ) const
+void game::draw( painter &p ) const
 {
     m_field->draw( p );
 }
 
-void Game::keyEvent( Snake::Direction d )
+void game::keyEvent( snake::Direction d )
 {
     m_snake->keyEvent( d );
 }
 
-size_t Game::snakeSize() const
+size_t game::snakeSize() const
 {
     return m_snake->size();
 }
 
-size_t Game::snakeMaxSize() const
+size_t game::snakeMaxSize() const
 {
     return m_snake->maxSize();
 }
 
-void Game::newGame()
+void game::newGame()
 {
     delete m_snake;
-    m_snake = new Snake();
+    m_snake = new snake();
     m_field->clear();
-    m_maxSize = m_snake->maxSize();
     m_status = m_snake->status();
 }
 
-Snake::Status Game::status() const
+snake::Status game::status() const
 {
-    return m_status;
+    return m_snake->status();
 }
 
-void Game::tick( )
+void game::tick( )
 {
     m_snake->tick( *m_field );
-    Snake::Status status = m_snake->status();
-    switch( status ) {
-        case Snake::INCREASED:
-            m_status = Snake::INCREASED;
-            break;
-        case Snake::LIVE:
-            m_status = Snake::LIVE;
-            break;
-        case Snake::WIN:
-            m_status = Snake::WIN;
-            break;
-        case Snake::DEAD:
-            m_status = Snake::DEAD;
-            break;
-    }
 }
