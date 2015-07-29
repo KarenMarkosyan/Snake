@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     game.cpp \
     painter.cpp \
     scene.cpp \
-    snake.cpp
+    snake.cpp \
+    ceratefield.cpp
 
 HEADERS  += menu.h \
     gamefield.h \
@@ -29,10 +30,12 @@ HEADERS  += menu.h \
     game.h \
     painter.h \
     scene.h \
-    snake.h
+    snake.h \
+    ceratefield.h
 
 FORMS    += menu.ui \
-    gamefield.ui
+    gamefield.ui \
+    ceratefield.ui
 
 RESOURCES += \
     shaders.qrc

@@ -3,8 +3,11 @@
 
 #include <QFile>
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QMessageBox>
 
 #include "gamefield.h"
+#include "ceratefield.h"
 
 namespace Ui {
 class menu;
@@ -33,8 +36,14 @@ private slots:
 
     void on_couse_clicked();
 
+    void on_path_textChanged(const QString &arg1);
+    
+    void on_createField_clicked();
+public slots:
+    void closeEvent(QCloseEvent *e);
 private:
     Ui::menu *ui;
+
     //Текущее конфигурации
     /*!
      * \brief h - высота
@@ -61,6 +70,20 @@ private:
      */
     gameField *gF;
     /*!
+     * \brief board - карта поля
+     */
+    bool **board;
+    /*!
+     * \brief p - путь до файла доски
+     */
+    QString p;
+    /*!
+     * \brief mastLoadFromP  - Нужно загрузить из файла
+     */
+    bool mastLoadFromP;
+
+    cerateField *c;
+    /*!
      * \brief showHideOptions - показать/скрыть меню конфигураций
      * \param flag
      */
@@ -75,6 +98,8 @@ private:
      * \return карта
      */
     bool ** load(QString file);
+
+
 };
 
 #endif // MENU_H
