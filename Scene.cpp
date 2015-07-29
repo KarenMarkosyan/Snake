@@ -37,19 +37,19 @@ void scene::slotUpdate()
     snake::Status status = m_game->status();
 
     switch( status ) {
-        case snake::LIVE:
-            break;
-        case snake::INCREASED:
-            sendStatus();
-            break;
-        case snake::DEAD:
-            m_game->newGame();
-            sendStatus();
-            break;
-        case snake::WIN:
-            m_timer.stop();
-            sendStatus();
-            return;
+    case snake::LIVE:
+        break;
+    case snake::INCREASED:
+        sendStatus();
+        break;
+    case snake::DEAD:
+        m_timer.stop();
+        sendStatus();
+        break;
+    case snake::WIN:
+        m_timer.stop();
+        sendStatus();
+        return;
     }
 
     m_game->tick();
@@ -67,7 +67,7 @@ void scene::initializeGL()
     fShader.compileSourceFile( ":/Shaders/fShader.glsl" );
 
     m_program.addShader( &vShader );
-m_program.addShader( &fShader );
+    m_program.addShader( &fShader );
 
     if ( !m_program.link() )
     {
@@ -108,28 +108,31 @@ void scene::resizeGL( int w, int h )
 void scene::keyPressEvent( QKeyEvent *event )
 {
     switch ( event->key() ) {
-        case Qt::Key_A:
-            m_game->keyEvent( snake::LEFT );
-            break;
-        case Qt::Key_W:
-            m_game->keyEvent( snake::UP );
-            break;
-        case Qt::Key_D:
-            m_game->keyEvent( snake::RIGHT );
-            break;
-        case Qt::Key_S:
-            m_game->keyEvent( snake::DOWN );
-            break;
-        case Qt::Key_Space:
-            m_game->newGame();
-            sendStatus();
-            m_timer.start( sp );
-            break;
+    case Qt::Key_A:
+        m_game->keyEvent( snake::LEFT );
+        break;
+    case Qt::Key_W:
+        m_game->keyEvent( snake::UP );
+        break;
+    case Qt::Key_D:
+        m_game->keyEvent( snake::RIGHT );
+        break;
+    case Qt::Key_S:
+        m_game->keyEvent( snake::DOWN );
+        break;
+    case Qt::Key_Space:
+        m_game->newGame();
+        sendStatus();
+        m_timer.start( sp );
+        break;
     }
 }
 
 void scene::sendStatus()
 {
-    size_t points = m_game->snakeSize();
-    emit signalShowStatus( QString( "%1/%2" ).arg( points ).arg( m_game->snakeMaxSize() ) );
+    if (m_game->status() == snake::WIN)
+        emit signalShowStatus("Вы выйграли!");
+    else if (m_game->status() == snake::DEAD){
+        emit signalShowStatus("Змейка умерла!");
+    }
 }

@@ -12,6 +12,7 @@ gameField::gameField(int w, int h, int s, bool **f, QWidget *parent) :
     QRect rect = frameGeometry();
     rect.moveCenter(QDesktopWidget().availableGeometry().center());
     move(rect.topLeft());
+    connect(ui->fieldWidget, SIGNAL(signalShowStatus(QString)), this, SLOT(mess(QString)));
 }
 
 gameField::~gameField()
@@ -25,4 +26,10 @@ void gameField::closeEvent(QCloseEvent *e)
 {
     setWindowTitle("");
     QWidget::closeEvent(e);
+}
+
+void gameField::mess(QString s)
+{
+    QMessageBox::critical(this, "Игра окончена.", s);
+    close();
 }

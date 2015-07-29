@@ -9,6 +9,7 @@ menu::menu(QWidget *parent) :
     ui->setupUi(this);
     isPause = false;
     isOptions = false;
+    mastLoadFromP = false;
     readOptions();
     ui->proceed->setVisible(isPause);
     showHideOptions(false);

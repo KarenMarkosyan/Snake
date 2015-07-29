@@ -39,3 +39,4 @@ FORMS    += menu.ui \
 
 RESOURCES += \
     shaders.qrc
+LIBS += -lglu32 -lglaux -lglut32 -lopengl32

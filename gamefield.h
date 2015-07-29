@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QRect>
 #include <QDesktopWidget>
+#include <QMessageBox>
 
 namespace Ui {
 class gameField;
@@ -35,6 +36,7 @@ private slots:
      * \param e - событие закрытия
      */
     void closeEvent(QCloseEvent *e);
+    void mess(QString s);
 };
 
 #endif // GAMEFIELD_H
