@@ -24,4 +24,5 @@ gameField::~gameField()
 void gameField::closeEvent(QCloseEvent *e)
 {
     setWindowTitle("");
+    QWidget::closeEvent(e);
 }

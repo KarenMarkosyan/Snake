@@ -22,11 +22,11 @@ public:
     /*!
      * \brief BLOCK_WIDTH - ширина одного блока изображения
      */
-    const int BLOCK_WIDTH = 10;
+    static const int BLOCK_WIDTH = 10;
     /*!
      * \brief BLOCK_HEIGHT - высота одного блока изображения
      */
-    const int BLOCK_HEIGHT = 10;
+    static const int BLOCK_HEIGHT = 10;
     /*!
      * \brief The Type enum - тип блока (Пустое поле, часть змеи, фрукт, препядствие)
      */

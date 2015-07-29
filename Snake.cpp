@@ -43,7 +43,7 @@ void snake::tick(field &f )
         return;
     }
 
-    if ( f.block( p.first, p.second ) == field::snake_BLOCK || f.block( p.first, p.second ) == field::BARRIER) {
+    if ( f.block( p.first, p.second ) == field::SNAKE_BLOCK || f.block( p.first, p.second ) == field::BARRIER) {
         m_status = snake::DEAD;
         return;
     }
@@ -51,13 +51,13 @@ void snake::tick(field &f )
     m_blocks.push_front( p );
 
     if ( f.block( p.first, p.second ) != field::FRUIT ) {
-        f.setBlock( field::snake_BLOCK, p.first, p.second );
+        f.setBlock( field::SNAKE_BLOCK, p.first, p.second );
         std::pair<int, int> p = m_blocks.back();
         f.setBlock( field::EMPTY, p.first, p.second );
         m_blocks.pop_back();
         m_status = snake::LIVE;
     } else {
-        f.setBlock( field::snake_BLOCK, p.first, p.second );
+        f.setBlock( field::SNAKE_BLOCK, p.first, p.second );
         f.newO(field::FRUIT);
         f.newO(field::BARRIER);
         m_status = snake::INCREASED;

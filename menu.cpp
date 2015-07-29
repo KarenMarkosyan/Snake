@@ -19,7 +19,7 @@ menu::~menu()
     delete ui;
 }
 
-menu::showHideOptions(bool flag)
+void menu::showHideOptions(bool flag)
 {
     setWindowTitle(!flag ? "Змейка: Главное меню." : "Змейка: Настройки.");
     ui->save->setVisible(flag);
@@ -41,7 +41,7 @@ menu::showHideOptions(bool flag)
     ui->exit->setVisible(!flag);
 }
 
-menu::readOptions()
+void menu::readOptions()
 {
     h = ui->height->value();
     w = ui->width->value();
@@ -104,6 +104,7 @@ void menu::on_newGame_clicked()
     gF = new gameField(w, h, s, NULL);
     gF->show();
     connect(gF, SIGNAL(windowTitleChanged(QString)), this, SLOT(CLEAR()));
+    hide();
 }
 
 
@@ -118,6 +119,7 @@ void menu::CLEAR()
 {
     if (gF->windowTitle().isEmpty())
         delete gF;
+    show();
 }
 
 void menu::on_couse_clicked()

@@ -64,11 +64,11 @@ private:
      * \brief showHideOptions - показать/скрыть меню конфигураций
      * \param flag
      */
-    showHideOptions(bool flag);
+    void showHideOptions(bool flag);
     /*!
      * \brief readOptions - сохранить текущую конфигурацию
      */
-    readOptions();
+    void readOptions();
     /*!
      * \brief load - загрузить поле из файла
      * \param file - имя файла
