@@ -1,6 +1,6 @@
 #include "menu.h"
 #include "ui_menu.h"
-#include <windows.h>
+
 
 menu::menu(QWidget *parent) :
     QMainWindow(parent),
